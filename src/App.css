@@ -10,6 +10,11 @@ area {
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
 header {
 	height: 60px;
 	display: flex;
@@ -46,13 +51,41 @@ header img {
 }
 
 .container {
-	border: 1px solid red;
-	margin: 50px 120px;
+	margin: 50px 120px 80px 120px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 20px 10px;
+	gap: 60px 20px;
 }
 
 .cell {
 	border: 1px solid black;
+	height: 250px;
+	width: 370px;
+}
+
+.cell-desc {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 0;
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+.cell img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.cell-desc-img {
+	display: flex;
+	gap: 10px;
+	height: 30px;
+}
+
+.cell-desc-img img {
+	object-fit: contain;
+	height: 100%;
+	width: 100%;
 }
