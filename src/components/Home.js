@@ -10,8 +10,8 @@ import level5 from '../assets/level-5.jpg';
 import level6 from '../assets/level-6.jpg';
 import waldo from '../assets/waldo.jpg';
 import odlaw from '../assets/odlaw.jpg';
-import wenda from '../assets/wenda.jpeg';
-import wizard from '../assets/wizard.jpeg';
+import wenda from '../assets/wenda.jpg';
+import wizard from '../assets/wizard.jpg';
 
 function Home() {
   return (
@@ -31,7 +31,7 @@ function Home() {
           </span>
         </div>
       </header>
-      <div className='main'>
+      <div>
         <div className='container'>
           <Link to='/game/1'>
             <div className='cell'>
@@ -59,7 +59,7 @@ function Home() {
               </div>
             </div>
           </Link>
-          <Link to=''>
+          <Link to='/game/3'>
             <div className='cell'>
               <img src={level3} alt='level-3'></img>
               <div className='cell-desc'>
@@ -73,7 +73,7 @@ function Home() {
               </div>
             </div>
           </Link>
-          <Link to=''>
+          <Link to='/game/4'>
             <div className='cell'>
               <img src={level4} alt='level-4'></img>
               <div className='cell-desc'>
@@ -88,7 +88,7 @@ function Home() {
               </div>
             </div>
           </Link>
-          <Link to=''>
+          <Link to='/game/5'>
             <div className='cell'>
               <img src={level5} alt='level-5'></img>
               <div className='cell-desc'>
@@ -104,7 +104,7 @@ function Home() {
               </div>
             </div>
           </Link>
-          <Link to=''>
+          <Link to='/game/6'>
             <div className='cell'>
               <img src={level6} alt='level-6'></img>
               <div className='cell-desc'>
