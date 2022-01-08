@@ -9,7 +9,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="game" element={<Game />} />
+        <Route path="game" >
+          <Route path=":id" element={<Game />} />
+        </Route>
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </BrowserRouter>

@@ -33,7 +33,7 @@ function Home() {
       </header>
       <div className='main'>
         <div className='container'>
-          <Link to='/game'>
+          <Link to='/game/1'>
             <div className='cell'>
               <img src={level1} alt='level-1'></img>
               <div className='cell-desc'>
@@ -46,7 +46,7 @@ function Home() {
               </div>
             </div>
           </Link>
-          <Link to=''>
+          <Link to='/game/2'>
             <div className='cell'>
               <img src={level2} alt='level-2'></img>
               <div className='cell-desc'>
