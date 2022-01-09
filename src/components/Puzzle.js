@@ -8,6 +8,9 @@ function Puzzle() {
 
   const puzzle = getPuzzle(parseInt(id, 10));
 
+  // Coordinates onclick
+  const [coord, setCoord] = useState({ x: 0, y: 0 });
+
   // Coordinates for menu dropdown
   const [menuCoord, setMenuCoord] = useState({ menuX: 0, menuY: 0 });
 
@@ -18,7 +21,7 @@ function Puzzle() {
     const imagey = image.getBoundingClientRect().top;
     const x = e.clientX - imagex;
     const y = e.clientY - imagey;
-    console.log(x, y)
+    setCoord({ x: x, y: y });
 
     // Coordinates for menu dropdown
     const menuX = e.pageX;
@@ -30,8 +33,8 @@ function Puzzle() {
   const [clicked, setClicked] = useState(false);
 
   const showMenu = () => {
-    // setClicked(!clicked);
-    setClicked(true)
+    setClicked(!clicked);
+    // setClicked(true)
   }
 
   return (
@@ -62,7 +65,7 @@ function Puzzle() {
           // useMap='#map'
           >
           </img>
-          {clicked && <Menu menuCoord={menuCoord} />}
+          {clicked && <Menu puzzle={puzzle} coord={coord} menuCoord={menuCoord} />}
           {/* <map name='map'>
             {Object.entries(puzzle.characters).map(([key, value]) => (
               <area

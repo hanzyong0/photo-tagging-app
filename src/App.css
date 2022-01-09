@@ -133,14 +133,33 @@ a {
 	max-width: 100%;
 }
 
-a {
+.dropdown {
+	display: flex;
+	flex-direction: column;
+	width: 120px;
+}
+
+.dropdown-btn {
+	border: 0.1px solid #e5e7eb;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 40px;
+	background-color: white;
 	cursor: pointer;
+	font-weight: 600;
 }
 
-.menu {
-	border: 5px solid red;
+.dropdown-btn:hover {
+	background-color: #eee;
 }
 
-area {
-	outline: 5px solid red;
+.dropdown-img {
+	width: 25px;
+	height: 25px;
+}
+
+.dropdown-text {
+	text-transform: capitalize;
 }
