@@ -87,11 +87,14 @@ a {
 }
 
 .puzzle header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: white;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	height: 60px;
-	margin-top: 5px;
 	padding: 0 50px;
 	border-bottom: 0.1px solid #e5e7eb;
 }
