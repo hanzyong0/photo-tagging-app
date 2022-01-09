@@ -130,14 +130,17 @@ a {
 }
 
 .puzzle .container img {
-	/* max-width: 1200px; */
 	max-width: 100%;
-}
-
-area {
-	outline: 5px solid red;
 }
 
 a {
 	cursor: pointer;
+}
+
+.menu {
+	border: 5px solid red;
+}
+
+area {
+	outline: 5px solid red;
 }
