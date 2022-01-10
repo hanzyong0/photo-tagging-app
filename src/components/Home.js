@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import waldoTitle from '../assets/waldo-title.jpg';
 
 import level1 from '../assets/level-1.jpg';
 import level2 from '../assets/level-2.jpg';
@@ -16,21 +15,6 @@ import wizard from '../assets/wizard.jpg';
 function Home() {
   return (
     <div className='home'>
-      <header>
-        <div className='header'>
-          <span>
-            <img src={waldoTitle} alt='waldo'></img>
-          </span>
-          <span className='header-title'>
-            <span className='header-title-left'>
-              Where's
-            </span>
-            <span className='header-title-right'>
-              Waldo?
-            </span>
-          </span>
-        </div>
-      </header>
       <div>
         <div className='container'>
           <Link to='/game/1'>
@@ -122,6 +106,9 @@ function Home() {
           </Link>
         </div>
       </div>
+      <Link to='/leaderboard'>
+        <button>click</button>
+      </Link>
     </div>
   )
 }

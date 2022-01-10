@@ -45,8 +45,8 @@ function Puzzle() {
   // Add found classname by looping over found array
   useEffect(() => {
     found.forEach(element => {
-      document.querySelector(`[name='${element}']`).classList.add('found')
-    })
+      document.querySelector(`[name='${element}']`).classList.add('found');
+    });
   }, [found])
 
   return (
@@ -73,7 +73,10 @@ function Puzzle() {
           <img
             src={puzzle.img}
             alt={puzzle.id}
-            onClick={(e) => { getCoord(e); showMenu(); }}
+            onClick={(e) => {
+              getCoord(e);
+              showMenu();
+            }}
             className='image'
           >
           </img>

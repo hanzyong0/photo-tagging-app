@@ -11,7 +11,7 @@ a {
 	color: black;
 }
 
-.home header {
+.home-header {
 	height: 60px;
 	display: flex;
 	justify-content: center;
@@ -20,12 +20,12 @@ a {
 	border-bottom: 0.1px solid #e5e7eb;
 }
 
-.home .header {
+.header {
 	display: flex;
 	gap: 10px;
 }
 
-.home header img {
+.header img {
 	height: 60px;
 }
 
