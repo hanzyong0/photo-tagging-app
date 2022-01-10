@@ -8,19 +8,20 @@ function Menu(props) {
 
   const handleBtnClick = (key, value) => {
     setTemp({ name: key, x1: value.x1, y1: value.y1, x2: value.x2, y2: value.y2 });
-    // setClicked(false);
+    setTimeout(() => {
+      setClicked(false);
+    }, 1);
   };
 
-  // Validate whether coordinates is within character's coordinate with found props
-  const validateCoord = () => {
-    if ((coord.x > temp.x1 && coord.x < temp.x2) && (coord.y > temp.y1 && coord.y < temp.y2)) {
-      setFound([...found, temp.name])
-    }
-    console.log(found)
-  }
-
+  // Validate whether coordinates is within character's coordinate and append to found array
   useEffect(() => {
+    const validateCoord = () => {
+      if ((coord.x > temp.x1 && coord.x < temp.x2) && (coord.y > temp.y1 && coord.y < temp.y2)) {
+        setFound([...found, temp.name])
+      }
+    }
     validateCoord();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [temp])
 
   return (
@@ -48,7 +49,6 @@ function Menu(props) {
           </div>
         </button>
       ))}
-      <button>{found}</button>
     </div >
   )
 }

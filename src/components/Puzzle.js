@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getPuzzle } from '../data';
 import Menu from './Menu';
 
 function Puzzle() {
   const { id } = useParams();
-
   const puzzle = getPuzzle(parseInt(id, 10));
+
 
   // Coordinates onclick
   const [coord, setCoord] = useState({ x: 0, y: 0 });
+
 
   // Coordinates for menu dropdown
   const [menuCoord, setMenuCoord] = useState({ menuX: 0, menuY: 0 });
@@ -29,6 +30,7 @@ function Puzzle() {
     setMenuCoord({ menuX: menuX, menuY: menuY })
   }
 
+
   // Trigger menu dropdown when clicked
   const [clicked, setClicked] = useState(false);
 
@@ -36,8 +38,16 @@ function Puzzle() {
     setClicked(!clicked);
   }
 
+
   // State to keep track of found characters
   const [found, setFound] = useState([]);
+
+  // Add found classname by looping over found array
+  useEffect(() => {
+    found.forEach(element => {
+      document.querySelector(`[name='${element}']`).classList.add('found')
+    })
+  }, [found])
 
   return (
     <div className='puzzle'>
@@ -48,11 +58,12 @@ function Puzzle() {
           </div>
         </Link>
         <div className='puzzle-chars'>
-          {Object.entries(puzzle.characters).map(([key, value], index) => (
+          {Object.entries(puzzle.characters).map(([key, value]) => (
             <img
               src={value.img}
               alt={key}
-              key={index}
+              key={key}
+              name={key}
             />
           ))}
         </div>
