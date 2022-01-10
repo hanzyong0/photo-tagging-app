@@ -52,10 +52,11 @@ function Puzzle() {
   return (
     <div className='puzzle'>
       <header>
-        <Link to='/'>
-          <div className='return-btn'>
-            Return
-          </div>
+        <Link
+          to='/'
+          className='return-btn'
+        >
+          Return
         </Link>
         <div className='puzzle-chars'>
           {Object.entries(puzzle.characters).map(([key, value]) => (

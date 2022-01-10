@@ -106,9 +106,17 @@ function Home() {
           </Link>
         </div>
       </div>
-      <Link to='/leaderboard'>
-        <button>click</button>
-      </Link>
+      <div className='home-leaderboard'>
+        <div className='home-leaderboard-desc'>
+          Think You Are Fast?
+        </div>
+        <Link
+          to='/leaderboard'
+          className='home-leaderboard-btn'
+        >
+          View Leaderboard
+        </Link>
+      </div>
     </div>
   )
 }
