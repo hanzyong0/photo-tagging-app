@@ -34,8 +34,10 @@ function Puzzle() {
 
   const showMenu = () => {
     setClicked(!clicked);
-    // setClicked(true)
   }
+
+  // State to keep track of found characters
+  const [found, setFound] = useState([]);
 
   return (
     <div className='puzzle'>
@@ -62,21 +64,16 @@ function Puzzle() {
             alt={puzzle.id}
             onClick={(e) => { getCoord(e); showMenu(); }}
             className='image'
-          // useMap='#map'
           >
           </img>
-          {clicked && <Menu puzzle={puzzle} coord={coord} menuCoord={menuCoord} />}
-          {/* <map name='map'>
-            {Object.entries(puzzle.characters).map(([key, value]) => (
-              <area
-                shape='rect'
-                coords={`${value.x1}, ${value.y1}, ${value.x2}, ${value.y2}`}
-                alt={key}
-                key={key}
-                href='#'
-              />
-            ))}
-          </map> */}
+          {clicked && <Menu
+            setClicked={setClicked}
+            puzzle={puzzle}
+            coord={coord}
+            menuCoord={menuCoord}
+            found={found}
+            setFound={setFound}
+          />}
         </div>
       </main>
     </div>
