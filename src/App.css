@@ -48,7 +48,7 @@ a {
 }
 
 /* Home page main content */
-.container {
+.home .container {
 	margin: 50px 80px 100px 90px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -156,11 +156,14 @@ a {
 }
 
 /* Puzzle page main content */
+.puzzle main {
+	padding: 100px 50px 50px 70px;
+}
+
 .puzzle .container {
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	margin-bottom: 50px;
 	max-width: 1200px;
 }
 
