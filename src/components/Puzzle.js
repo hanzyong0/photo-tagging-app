@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getPuzzle } from '../data';
 import Menu from './Menu';
+
+import db from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
+
 
 function Puzzle() {
   const { id } = useParams();
-  const puzzle = getPuzzle(parseInt(id, 10));
+
+  // get data from firestore and setstate
+  const [puzzle, setPuzzle] = useState({});
+
+  useEffect(() => {
+    const docRef = doc(db, 'puzzles', id);
+    const getPuzzle = async () => {
+      const results = await getDoc(docRef);
+      setPuzzle(results.data());
+    };
+    getPuzzle();
+  }, []);
 
 
   // Coordinates onclick
   const [coord, setCoord] = useState({ x: 0, y: 0 });
-
 
   // Coordinates for menu dropdown
   const [menuCoord, setMenuCoord] = useState({ menuX: 0, menuY: 0 });
@@ -59,7 +72,7 @@ function Puzzle() {
           Return
         </Link>
         <div className='puzzle-chars'>
-          {Object.entries(puzzle.characters).map(([key, value]) => (
+          {puzzle.characters && Object.entries(puzzle.characters).map(([key, value]) => (
             <img
               src={value.img}
               alt={key}

@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import db from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react'
-
 
 function Home() {
-  const colRef = collection(db, 'puzzles')
-
   const [puzzles, setPuzzles] = useState([]);
 
   useEffect(() => {
+    const colRef = collection(db, 'puzzles')
     const getPuzzles = async () => {
-      const data = await getDocs(colRef);
-      setPuzzles(data.docs.map(doc => ({ ...doc.data() })))
+      const results = await getDocs(colRef);
+      setPuzzles(results.docs.map(doc => ({ ...doc.data(), id: doc.id })))
     }
     getPuzzles()
   }, [])
