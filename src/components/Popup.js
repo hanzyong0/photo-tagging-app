@@ -1,8 +1,9 @@
+import { addDoc, collection } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react'
+import db from '../firebase';
 
 function Popup(props) {
-  const { setOpaque, startTime, endTime } = props;
-
+  const { setOpaque, startTime, endTime, id } = props;
 
   // form close when Cancel button clicked
   const closeForm = () => {
@@ -21,11 +22,15 @@ function Popup(props) {
   }, []);
 
 
-  // handle submit
-  const handleSubmit = (e) => {
+  // handle submit and addDoc
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target.name.value);
-  }
+    const colRef = collection(db, id)
+    await addDoc((colRef), {
+      name: e.target.name.value,
+      time: totalTime
+    });
+  };
 
   return (
     <div className='form-popup' onSubmit={(e) => { handleSubmit(e); closeForm(); }}>

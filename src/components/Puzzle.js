@@ -144,6 +144,7 @@ function Puzzle() {
           setOpaque={setOpaque}
           startTime={startTime}
           endTime={endTime}
+          id={id}
         />}
     </div>
   )
