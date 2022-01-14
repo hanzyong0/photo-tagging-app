@@ -4,10 +4,12 @@ import Menu from './Menu';
 
 import db from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import Popup from './Popup';
 
 
 function Puzzle() {
   const { id } = useParams();
+
 
   // get data from firestore and setstate
   const [puzzle, setPuzzle] = useState({});
@@ -17,8 +19,12 @@ function Puzzle() {
     const getPuzzle = async () => {
       const results = await getDoc(docRef);
       setPuzzle(results.data());
+
+      // Populate puzzle's all characters array 
+      setAllChars(Object.keys(results.data().characters));
     };
     getPuzzle();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -55,12 +61,30 @@ function Puzzle() {
   // State to keep track of found characters
   const [found, setFound] = useState([]);
 
+  // All characters present in this puzzle
+  const [allChars, setAllChars] = useState([]);
+
   // Add found classname by looping over found array
   useEffect(() => {
-    found.forEach(element => {
-      document.querySelector(`[name='${element}']`).classList.add('found');
-    });
+    // compare found to all characters present in this puzzle
+    if (allChars.length === 0) {
+      return;
+    } else {
+      if (allChars.every(element => found.includes(element))) {
+        setOpaque(true);
+        // return <Popup />
+      };
+      // set found class to found array
+      found.forEach(element => {
+        document.querySelector(`[name='${element}']`).classList.add('found');
+      })
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [found])
+
+
+  // blur background when form popup
+  const [opaque, setOpaque] = useState(false);
 
   return (
     <div className='puzzle'>
@@ -83,7 +107,7 @@ function Puzzle() {
         </div>
       </header>
       <main>
-        <div className='container'>
+        <div className={`container ${opaque ? 'hello' : null}`}>
           <img
             src={puzzle.img}
             alt={puzzle.id}
@@ -104,6 +128,7 @@ function Puzzle() {
           />}
         </div>
       </main>
+      {opaque && <Popup setOpaque={setOpaque} />}
     </div>
   )
 }

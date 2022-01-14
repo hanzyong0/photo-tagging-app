@@ -126,6 +126,7 @@ a {
 	height: 60px;
 	padding: 0 50px;
 	border-bottom: 0.1px solid #e5e7eb;
+	z-index: 1;
 }
 
 .return-btn {
@@ -291,4 +292,78 @@ a {
 .right {
 	display: flex;
 	align-items: center;
+}
+
+/* Popup form */
+.form-popup {
+	display: none;
+	position: fixed;
+	top: 20%;
+	left: 30%;
+	z-index: 2;
+	height: 350px;
+	width: 550px;
+	background-color: white;
+	display: flex;
+	border-radius: 8px;
+	border: 1px solid black;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form-container .top {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.form-container .mid {
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 15px;
+	padding: 0 50px;
+	border-top: 1px solid #e5e7eb;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.form-container .mid p {
+	font-size: 1.2em;
+}
+
+.form-container .mid input {
+	padding: 10px;
+	width: 100%;
+	font-size: 1.3em;
+}
+
+.form-container .bottom {
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.form-container .bottom button {
+	padding: 10px 20px;
+	font-size: 1em;
+	font-weight: 600;
+	border-radius: 10px;
+	background-color: rgba(248, 113, 113);
+	color: rgba(255, 255, 255);
+	border: none;
+	cursor: pointer;
+}
+
+.hello {
+	opacity: 20%;
 }
