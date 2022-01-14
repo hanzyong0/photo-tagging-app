@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { getPuzzles } from '../data';
+import db from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 function Leaderboard() {
-  const puzzles = getPuzzles();
+  // get puzzle imgs from firestore
+  const [puzzles, setPuzzles] = useState([]);
+
+  useEffect(() => {
+    const colRef = collection(db, 'puzzles')
+    const getPuzzles = async () => {
+      const results = await getDocs(colRef);
+      setPuzzles(results.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+    }
+    getPuzzles()
+  }, []);
+
 
   // Temporary id to link to puzzle
   const [temp, setTemp] = useState();

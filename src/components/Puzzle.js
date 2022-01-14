@@ -66,12 +66,13 @@ function Puzzle() {
 
   // Add found classname by looping over found array
   useEffect(() => {
-    // compare found to all characters present in this puzzle
+    // compare found to all characters present in this puzzle and set endTime
     if (allChars.length === 0) {
       return;
     } else {
       if (allChars.every(element => found.includes(element))) {
         setOpaque(true);
+        setEndTime(new Date().getTime());
       };
       // set found class to found array
       found.forEach(element => {
@@ -84,6 +85,16 @@ function Puzzle() {
 
   // blur background when form popup
   const [opaque, setOpaque] = useState(false);
+
+
+  // track time taken 
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(0)
+
+  useEffect(() => {
+    setStartTime(new Date().getTime())
+  }, [])
+
 
   return (
     <div className='puzzle'>
@@ -127,7 +138,13 @@ function Puzzle() {
           />}
         </div>
       </main>
-      {opaque && <Popup setOpaque={setOpaque} />}
+      {opaque
+        &&
+        <Popup
+          setOpaque={setOpaque}
+          startTime={startTime}
+          endTime={endTime}
+        />}
     </div>
   )
 }
