@@ -72,7 +72,6 @@ function Puzzle() {
     } else {
       if (allChars.every(element => found.includes(element))) {
         setOpaque(true);
-        // return <Popup />
       };
       // set found class to found array
       found.forEach(element => {
