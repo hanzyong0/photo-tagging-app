@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import db from '../firebase';
 
 function Scores() {
@@ -11,7 +11,7 @@ function Scores() {
 
   useEffect(() => {
     const colRef = collection(db, id);
-    const unsub = onSnapshot(colRef, (snapshot) => {
+    const unsub = onSnapshot(query(colRef, orderBy('time', 'asc')), (snapshot) => {
       setScores(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })))
     });
     return () => {
@@ -26,7 +26,7 @@ function Scores() {
         <p className='right'>TIME (SECONDS)</p>
       </div>
       {scores.map(score => (
-        <div className='players' key={score.id}>
+        <div className='players' key={score.name}>
           <p className='left'>{score.name}</p>
           <p className='right'>{score.time}</p>
         </div>

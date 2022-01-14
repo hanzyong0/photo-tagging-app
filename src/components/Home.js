@@ -35,7 +35,7 @@ function Home() {
                     {`Level ${puzzle.id}`}
                   </div>
                   <div className='cell-desc-img'>
-                    {Object.entries(puzzle.characters).map(([key, value]) => (
+                    {Object.entries(puzzle.characters).sort().map(([key, value]) => (
                       <img
                         src={value.img}
                         alt={key}

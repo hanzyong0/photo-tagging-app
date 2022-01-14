@@ -106,7 +106,7 @@ function Puzzle() {
           Return
         </Link>
         <div className='puzzle-chars'>
-          {puzzle.characters && Object.entries(puzzle.characters).map(([key, value]) => (
+          {puzzle.characters && Object.entries(puzzle.characters).sort().map(([key, value]) => (
             <img
               src={value.img}
               alt={key}
@@ -117,7 +117,7 @@ function Puzzle() {
         </div>
       </header>
       <main>
-        <div className={`container ${opaque ? 'hello' : null}`}>
+        <div className={`container ${opaque ? 'blur' : null}`}>
           <img
             src={puzzle.img}
             alt={puzzle.id}

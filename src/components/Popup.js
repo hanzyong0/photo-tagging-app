@@ -1,8 +1,10 @@
 import { addDoc, collection } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import db from '../firebase';
 
 function Popup(props) {
+  const navigate = useNavigate();
   const { setOpaque, startTime, endTime, id } = props;
 
   // form close when Cancel button clicked
@@ -30,6 +32,7 @@ function Popup(props) {
       name: e.target.name.value,
       time: totalTime
     });
+    navigate('/');
   };
 
   return (
@@ -39,10 +42,10 @@ function Popup(props) {
         <div className='mid'>
           <p>Enter your name to save your score on the leaderboard</p>
           <label htmlFor='name'></label>
-          <input id='name' type='text' placeholder='Enter Name Here'></input>
+          <input id='name' type='text' placeholder='Enter Name Here' required></input>
         </div>
         <div className='bottom'>
-          <button type='button' onClick={closeForm}>Cancel</button>
+          <button type='button' className='cancel' onClick={closeForm}>Cancel</button>
           <button type='submit'>Submit</button>
         </div>
       </form>

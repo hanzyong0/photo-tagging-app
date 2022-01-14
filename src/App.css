@@ -364,6 +364,15 @@ a {
 	cursor: pointer;
 }
 
-.hello {
+.form-container .bottom .cancel {
+	color: rgba(220, 38, 38);
+	background-color: white;
+}
+
+.form-container .bottom .cancel:hover {
+	background-color: rgba(254, 242, 242);
+}
+
+.blur {
 	opacity: 20%;
 }
